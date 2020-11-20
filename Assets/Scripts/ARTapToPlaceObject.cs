@@ -7,6 +7,11 @@ using System;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
+    public GameObject gameObjectToInstantiate;
+    private GameObject spawnedObject;
+    private Vector2 touchPosition;
+    static List<ARRaycastHit> hits = new List<ARRaycastHit>();
+
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
@@ -23,6 +28,25 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
+        if (!TryToGetTouchPosition(out Vector2 touchPosition))
+        {
+            return;
+        }
+        if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
+        {
+            var hitPose = hits[0].pose;
+
+            hitPose.position.y = hitPose.position.y + 1;
+
+            if (spawnedObject == null)
+            {
+                spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+            }
+            else
+            {
+                spawnedObject.transform.position = hitPose.position;
+            }
+        }
     }
 
     private void UpdatePlacementIndicator()
@@ -36,6 +60,18 @@ public class ARTapToPlaceObject : MonoBehaviour
         {
             placementIndicator.SetActive(false);
         }
+    }
+
+    bool TryToGetTouchPosition(out Vector2 touchPosition)
+    {
+        if(Input.touchCount > 0)
+        {
+            touchPosition = Input.GetTouch(0).position;
+            return true;
+        }
+
+        touchPosition = default;
+        return false;
     }
 
     private void UpdatePlacementPose()
