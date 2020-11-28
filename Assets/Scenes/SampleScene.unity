@@ -620,6 +620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameObjectToInstantiate: {fileID: 8001252148150376305, guid: 018b39e1e2103fa4a9a23cc0747d29fa, type: 3}
+  gameWorldBoundaries: {fileID: 0}
   placementIndicator: {fileID: 396351270}
 --- !u!4 &2087636399
 Transform:

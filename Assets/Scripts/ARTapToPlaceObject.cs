@@ -8,7 +8,9 @@ using System;
 public class ARTapToPlaceObject : MonoBehaviour
 {
     public GameObject gameObjectToInstantiate;
+    public GameObject gameWorldBoundaries;
     private GameObject spawnedObject;
+    private GameObject worldBoundaries;
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
@@ -34,17 +36,21 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
+            // get all possible surfaces, select the closest one
             var hitPose = hits[0].pose;
 
+            // adjust the height of the object by 1
             hitPose.position.y = hitPose.position.y + 1;
 
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
             }
             else
             {
                 spawnedObject.transform.position = hitPose.position;
+                worldBoundaries.transform.position = hitPose.position;
             }
         }
     }
