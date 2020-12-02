@@ -1456,6 +1456,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: _R Boss 1.0
       objectReference: {fileID: 0}
+    - target: {fileID: 7205140776170859923, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 771825c657fa04f4482207ff18eb3981, type: 2}
+    - target: {fileID: 7205140776170859923, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3007dbd9f82da27469bfbbfb60f9972e, type: 2}
+    - target: {fileID: 8907275933940684224, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 771825c657fa04f4482207ff18eb3981, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
 --- !u!1 &1697938219
@@ -1588,25 +1600,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
   m_PrefabInstance: {fileID: 1611519046}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1759533882
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759533880}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!111 &1759533883
 Animation:
   m_ObjectHideFlags: 0
