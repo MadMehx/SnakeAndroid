@@ -827,7 +827,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000005587938, y: 0.11905488, z: -0.000000059604623}
+  m_ConnectedAnchor: {x: 0.000000044703476, y: 0.11905469, z: 0.00000009685751}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1069,7 +1069,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00050003745, y: 0.11560009, z: 0.0002998634}
+  m_ConnectedAnchor: {x: 0.0004999092, y: 0.11560003, z: 0.00030007202}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1339,7 +1339,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000001527369, y: 0.112133265, z: -0.00000024866316}
+  m_ConnectedAnchor: {x: 0.000000104773804, y: 0.112132385, z: -0.000000047963123}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1464,6 +1464,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 3007dbd9f82da27469bfbbfb60f9972e, type: 2}
+    - target: {fileID: 7205140776170859923, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 20fb8c41e411c624fa05a0facfcdb8b1, type: 2}
     - target: {fileID: 8907275933940684224, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1561,7 +1565,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0002654782, y: 0.11559989, z: -0.0004253968}
+  m_ConnectedAnchor: {x: -0.0004746124, y: 0.1155637, z: -0.0005250765}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -1610,7 +1614,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: -887982601649841707, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -887982601649841707, guid: 8420e3591694518468a920ef2b9caabd, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
