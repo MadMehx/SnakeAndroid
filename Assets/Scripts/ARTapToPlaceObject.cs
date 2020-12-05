@@ -45,6 +45,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                spawnedObject.transform.localScale = new Vector3(0.012f, 0.012f, 0.012f);
                 worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
             }
             else
