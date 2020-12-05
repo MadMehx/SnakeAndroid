@@ -40,7 +40,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             var hitPose = hits[0].pose;
 
             // adjust the height of the object by 1
-            hitPose.position.y = hitPose.position.y + 1;
+            hitPose.position.y = hitPose.position.y + .1f;
 
             if (spawnedObject == null)
             {
