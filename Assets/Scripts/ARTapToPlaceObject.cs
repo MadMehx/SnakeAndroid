@@ -39,13 +39,13 @@ public class ARTapToPlaceObject : MonoBehaviour
             // get all possible surfaces, select the closest one
             var hitPose = hits[0].pose;
 
-            // adjust the height of the object by 1
-            hitPose.position.y = hitPose.position.y + .1f;
+            // adjust the height of the object by .2
+            hitPose.position.y = hitPose.position.y + 0.2f;
 
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
-                spawnedObject.transform.localScale = new Vector3(0.012f, 0.012f, 0.012f);
+                //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
                 worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
             }
             else
