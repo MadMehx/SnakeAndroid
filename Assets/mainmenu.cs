@@ -12,7 +12,7 @@ using UnityEngine.SceneManagement;
 //   -- There are two buttons 
 //   -- The buttons properly reference the functions
 
-public class mainmenu : MonoBehaviour
+public class Mainmenu : MonoBehaviour
 {
     //-----------------------------------------------------------------------------
     // PlayGame
