@@ -50,9 +50,8 @@ public class ARTapToPlaceObject : MonoBehaviour
             }
             else
             {
-                //spawnedObject.transform.position = hitPose.position;
-                //worldBoundaries.transform.position = hitPose.position;
-                spawnedObject.GetComponent<Rigidbody>().AddForce(0, 0, 500);
+                spawnedObject.transform.position = hitPose.position;
+                worldBoundaries.transform.position = hitPose.position;
             }
         }
     }
