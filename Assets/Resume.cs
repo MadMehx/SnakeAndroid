@@ -2,30 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-//-----------------------------------------------------------------------------
-// Creates functionalility for the start and quit button for the application 
-// for the main menu. It uses Unity's SceneManagement library to help build the
-// function needed to shift to a different scene.
-//
-// Assumptions, implementation details
-//   -- There are two buttons 
-//   -- The buttons properly reference the functions
-
-public class mainmenu : MonoBehaviour
+public class Resume : MonoBehaviour
 {
-    //-----------------------------------------------------------------------------
     // PlayGame
     // public void function. This function allows the user to press on the start
     // button for the application and it will load the game. The function 
     // uses the scenemanager in Unity to change between different scenes within
     // the application.
-    public void PlayGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-
-
     public void PauseGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -34,7 +17,6 @@ public class mainmenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
-
     //-----------------------------------------------------------------------------
     // QuitGame
     // public void function. This function allows the user to press on the quit
