@@ -206,6 +206,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &309199795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8652499504124417759, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+  m_PrefabInstance: {fileID: 7806111895265671354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &309199799
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309199795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.09
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &690584908
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +496,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1484439559 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2036534989551430219, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+  m_PrefabInstance: {fileID: 7806111895265671354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1484439563
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484439559}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.09
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1697938219
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,6 +742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5754069426148538906, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6959619125278806445, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_Name
       value: _R Boss 1.0
@@ -1048,6 +1090,22 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.0000013448272
       objectReference: {fileID: 0}
+    - target: {fileID: 7806111896624279445, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_HighTwistLimit.limit
+      value: 37.231483
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111896624279445, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_LowTwistLimit.limit
+      value: -4.2911263
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111896624279445, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_Swing2Limit.limit
+      value: 21.647253
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111896624279445, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_Swing1Limit.limit
+      value: 28.12912
+      objectReference: {fileID: 0}
     - target: {fileID: 7806111896922150265, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_Material
       value: 
@@ -1086,7 +1144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7806111897016771456, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7806111897016771457, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_Enabled
@@ -1127,6 +1185,22 @@ PrefabInstance:
     - target: {fileID: 7806111897221031306, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.0000013448272
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111897221031306, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_LowTwistLimit.limit
+      value: 0.7654059
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111897221031306, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_HighTwistLimit.limit
+      value: 47.40701
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111897221031306, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_Swing2Limit.limit
+      value: 19.758213
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806111897221031306, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_Swing1Limit.limit
+      value: 23.808376
       objectReference: {fileID: 0}
     - target: {fileID: 7806111897221031316, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_Enabled
