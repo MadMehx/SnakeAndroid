@@ -15,6 +15,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
     private Animator animator;
+    private Animation animation;
 
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
@@ -24,7 +25,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = FindObjectOfType<Animator>();
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
     
@@ -49,14 +49,18 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                if (animator == null)
+                {
+                    animator = FindObjectOfType<Animator>();
+                }
                 //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
-                worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
+                //worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
             }
             else
             {
-                //spawnedObject.transform.position = hitPose.position;
+                spawnedObject.transform.position = hitPose.position;
                 //worldBoundaries.transform.position = hitPose.position;
-                Animator.enabled = false;
+                animator.enabled = false;
             }
         }
     }
