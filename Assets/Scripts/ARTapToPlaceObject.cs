@@ -14,7 +14,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    animator = FindObjectOfType<Animator>();
+    private Animator animator;
 
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
@@ -24,10 +24,10 @@ public class ARTapToPlaceObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        animator = FindObjectOfType<Animator>();
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
-    private Animator animator;
+    
 
     // Update is called once per frame
     void Update()
