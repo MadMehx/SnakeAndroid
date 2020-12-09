@@ -25,16 +25,6 @@ public class mainmenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-
-    public void PauseGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
-    public void ResumeGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
-    }
-
     //-----------------------------------------------------------------------------
     // QuitGame
     // public void function. This function allows the user to press on the quit
