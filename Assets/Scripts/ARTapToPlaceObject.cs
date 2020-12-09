@@ -14,16 +14,22 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
+    private Animator animator;
+    private Animation animation;
+
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
+
+    int tap;
 
     // Start is called before the first frame update
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -36,22 +42,37 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
+            
             // get all possible surfaces, select the closest one
             var hitPose = hits[0].pose;
-
+            
             // adjust the height of the object by .2
             hitPose.position.y = hitPose.position.y + 0.2f;
 
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                if (animator == null)
+                {
+                    animator = FindObjectOfType<Animator>();
+                }
                 //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
-                worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
+                //worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
+                animator.enabled = true;
+                tap = 0;
+            }
+            else if (tap < 5) {
+                tap++;
+                animator.enabled = false;
             }
             else
             {
                 spawnedObject.transform.position = hitPose.position;
-                worldBoundaries.transform.position = hitPose.position;
+                //worldBoundaries.transform.position = hitPose.position;
+                animator.enabled = true;
+                animation.play("getup");
+                animator.play("getup");
+                tap = 0;
             }
         }
     }
