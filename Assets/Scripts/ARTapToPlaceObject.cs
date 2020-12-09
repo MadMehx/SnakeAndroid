@@ -14,6 +14,9 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
+    private Animation animation;
+    int tap;
+
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
@@ -47,11 +50,26 @@ public class ARTapToPlaceObject : MonoBehaviour
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
                 //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
                 worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
+                if (animator == null)
+                {
+                    animator = FindObjectOfType<Animator>();
+                }
+                animator.enabled = true;
+                tap = 0;
+            }
+            else if (tap < 5)
+            {
+                tap++;
+                animator.enabled = false;
             }
             else
             {
-                spawnedObject.transform.position = hitPose.position;
-                worldBoundaries.transform.position = hitPose.position;
+                //spawnedObject.transform.position = hitPose.position;
+                //worldBoundaries.transform.position = hitPose.position;
+                animator.enabled = true;
+                animation.play("getu");
+                animator.play("getu");
+                tap = 0;
             }
         }
     }
