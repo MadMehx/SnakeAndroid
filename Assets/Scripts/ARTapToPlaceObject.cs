@@ -22,6 +22,8 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Pose placementPose;
     private bool placementPoseIsValid = false;
 
+    int tap;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,9 +42,10 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
+            
             // get all possible surfaces, select the closest one
             var hitPose = hits[0].pose;
-
+            
             // adjust the height of the object by .2
             hitPose.position.y = hitPose.position.y + 0.2f;
 
@@ -55,12 +58,21 @@ public class ARTapToPlaceObject : MonoBehaviour
                 }
                 //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
                 //worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
+                animator.enabled = true;
+                tap = 0;
+            }
+            else if (tap < 5) {
+                tap++;
+                animator.enabled = false;
             }
             else
             {
                 spawnedObject.transform.position = hitPose.position;
                 //worldBoundaries.transform.position = hitPose.position;
-                animator.enabled = false;
+                animator.enabled = true;
+                animation.play("getup");
+                animator.play("getup");
+                tap = 0;
             }
         }
     }
