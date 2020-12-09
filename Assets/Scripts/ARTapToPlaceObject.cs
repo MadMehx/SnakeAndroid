@@ -14,6 +14,8 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
+    animator = FindObjectOfType<Animator>();
+
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
@@ -22,8 +24,10 @@ public class ARTapToPlaceObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
+    private Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -50,8 +54,9 @@ public class ARTapToPlaceObject : MonoBehaviour
             }
             else
             {
-                spawnedObject.transform.position = hitPose.position;
-                worldBoundaries.transform.position = hitPose.position;
+                //spawnedObject.transform.position = hitPose.position;
+                //worldBoundaries.transform.position = hitPose.position;
+                Animator.enabled = false;
             }
         }
     }
