@@ -630,7 +630,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000003725291, y: 0.19108507, z: 0.000000029802678}
+  m_ConnectedAnchor: {x: 0.000000007450582, y: 0.19108507, z: 0.000000029802678}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -862,7 +862,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000000003725291, y: 0.19108507, z: 0.000000029802678}
+  m_ConnectedAnchor: {x: -0.000000007450582, y: 0.19108507, z: 0.000000029802678}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -1826,6 +1826,7 @@ GameObject:
   - component: {fileID: 9145016193301169638}
   - component: {fileID: 7806111896624279444}
   - component: {fileID: 7806111896624279445}
+  - component: {fileID: 4421055159796259838}
   m_Layer: 0
   m_Name: foot.L
   m_TagString: Untagged
@@ -1883,22 +1884,22 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 6.6944513
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 64.12103
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 40
+    limit: 22.409653
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 40
+    limit: 19.2627
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -1910,6 +1911,20 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &4421055159796259838
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036534989551430219}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.09
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2050059524099428640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,7 +1999,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -7.577e-42, y: 0.10234752, z: -0.006254607}
+  m_ConnectedAnchor: {x: -7.347e-42, y: 0.10234752, z: -0.006254607}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -4868,7 +4883,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000006146728, y: 0.11905467, z: -0.000000026077023}
+  m_ConnectedAnchor: {x: 0.00000012107192, y: 0.11905468, z: -0.00000003725289}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -5099,7 +5114,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -5.1428e-40, y: 0.17336111, z: 0.014450966}
+  m_ConnectedAnchor: {x: -5.1428e-40, y: 0.17336105, z: 0.014450883}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -8699,6 +8714,7 @@ GameObject:
   - component: {fileID: 5754069426148538906}
   - component: {fileID: 7806111897221031317}
   - component: {fileID: 7806111897221031306}
+  - component: {fileID: 2600033980797920369}
   m_Layer: 0
   m_Name: foot.R
   m_TagString: Untagged
@@ -8756,22 +8772,22 @@ CharacterJoint:
     spring: 0
     damper: 0
   m_LowTwistLimit:
-    limit: -20
+    limit: 8.659821
     bounciness: 0
     contactDistance: 0
   m_HighTwistLimit:
-    limit: 70
+    limit: 58.33603
     bounciness: 0
     contactDistance: 0
   m_SwingLimitSpring:
     spring: 0
     damper: 0
   m_Swing1Limit:
-    limit: 40
+    limit: 18.674622
     bounciness: 0
     contactDistance: 0
   m_Swing2Limit:
-    limit: 40
+    limit: 14.460353
     bounciness: 0
     contactDistance: 0
   m_EnableProjection: 0
@@ -8783,6 +8799,20 @@ CharacterJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &2600033980797920369
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8652499504124417759}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.09
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8658811441519998125
 GameObject:
   m_ObjectHideFlags: 0
