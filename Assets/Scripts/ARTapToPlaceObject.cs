@@ -23,6 +23,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private bool placementPoseIsValid = false;
     private Vector3 defaultObjectPosition;
     public Pose spawnPose;
+    int lol;
 
     // Start is called before the first frame update
     void Start()
@@ -150,6 +151,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         Physics.gravity = new Vector3(0, 0, 0);
         animator.enabled = true;
         lol = 0;
+        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         while (foundRigidBodies.Length > lol)
         {
             foundRigidBodies[lol].isKinematic = true;
