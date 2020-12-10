@@ -24,6 +24,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector3 defaultObjectPosition;
     public Pose spawnPose;
     int lol;
+    Vector3 punch;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +85,8 @@ public class ARTapToPlaceObject : MonoBehaviour
                     lol++;
                 }
                 Debug.Log("grav init");
+                punch = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
+                foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(punch, ForceMode.Impulse);
                 // adding physics is bugged?
                 //Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
                 StartCoroutine(hit());
