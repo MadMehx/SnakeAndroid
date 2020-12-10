@@ -20,7 +20,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
-    private int tap;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +48,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
-                spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
                 if (animator == null)
                 {
                     animator = FindObjectOfType<Animator>();
@@ -57,21 +55,18 @@ public class ARTapToPlaceObject : MonoBehaviour
                 //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
                 //worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
                 animator.enabled = true;
-                tap = 0;
             }
-            else if (tap < 5)
-            {
-                tap++;
-                animator.enabled = false;
-            }
+            //regular tappin
             else
             {
-                spawnedObject.transform.position = hitPose.position;
+                //legacy code:
+                //spawnedObject.transform.position = hitPose.position;
                 //worldBoundaries.transform.position = hitPose.position;
-                animator.enabled = true;
-                animation.Play("getup");
-                animator.Play("get u");
-                tap = 0;
+                Debug.Log("Tapped.");
+                animator.enabled = false;
+                Debug.Log("grav init");
+                Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
+                StartCoroutine(hit());
             }
         }
     }
@@ -118,5 +113,25 @@ public class ARTapToPlaceObject : MonoBehaviour
             // set placement pose to the first plane in list
             placementPose = hits[0].pose;
         }
+    }
+
+    //Timer for hit minimum 1 second :/
+    IEnumerator hit()
+    {
+
+        yield return new WaitForSeconds(1);
+        Debug.Log("registered hit");
+
+        Physics.gravity = new Vector3(0, -100.0F, 0);
+        Debug.Log("grav reset");
+    }
+
+    //reset: missing positional reset right now
+    void rest()
+    {
+        animator.Play("get u");
+        animator.enabled = true;
+
+        Debug.Log("reset");
     }
 }
