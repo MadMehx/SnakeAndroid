@@ -30,7 +30,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         resetButton.onClick.AddListener(ResetObject);
-        Physics.gravity = new Vector3(0, -10, 0);
+        Physics.gravity = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -66,7 +66,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 {
                     animator = FindObjectOfType<Animator>();
                 }
-                Physics.gravity = new Vector3(0, -10, 0);
+                //Physics.gravity = new Vector3(0, -10, 0);
                 
                 lol = 0;
                 
@@ -85,7 +85,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 }
                 Debug.Log("grav init");
                 // adding physics is bugged?
-                Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
+                //Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
                 StartCoroutine(hit());
             }
         }
@@ -142,7 +142,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         yield return new WaitForSeconds(1);
         Debug.Log("registered hit");
 
-        Physics.gravity = new Vector3(0, -100.0F, 0);
+        //Physics.gravity = new Vector3(0, -10.0F, 0);
         Debug.Log("grav reset");
     }
 
