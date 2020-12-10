@@ -16,7 +16,7 @@ public class ClickAnim : MonoBehaviour
 
     void Start()
     {
-        
+        GetComponent<Rigidbody>().inertiaTensor = GetComponent<Rigidbody>().inertiaTensor + new Vector3(0, 0, GetComponent<Rigidbody>().inertiaTensor.z * 100);
         //r = GetComponent<Rigidbody>();
     }
 
@@ -33,8 +33,9 @@ public class ClickAnim : MonoBehaviour
             }
             if (tap == 0)
             {
-                Physics.gravity = new Vector3(0, 0, 0);
+                //Physics.gravity = new Vector3(0, 0, 0);
                 animator.enabled = true;
+
             }
 
             if (tap < 5)
@@ -54,7 +55,7 @@ public class ClickAnim : MonoBehaviour
             }
             else
             {
-                Physics.gravity = new Vector3(0, 0, 0);
+                //Physics.gravity = new Vector3(0, 0, 0);
                 animator.Play("get u");
                 
                 animator.enabled = true;
