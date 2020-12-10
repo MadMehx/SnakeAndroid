@@ -56,24 +56,25 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
+                spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
                 if (animator == null)
                 {
                     animator = FindObjectOfType<Animator>();
                 }
                 animator.enabled = false;
-                spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
-                //while (foundRigidBodies.Length > lol)
-                //{
-                    //foundRigidBodies[lol].isKinematic = false;
-                    //foundRigidBodies[lol].detectCollisions = true;
-                    //lol++;
-                //}
+                
+                while (foundRigidBodies.Length > lol)
+                {
+                    foundRigidBodies[lol].isKinematic = true;
+                    foundRigidBodies[lol].detectCollisions = false;
+                    lol++;
+                }
                 
                 defaultObjectPosition = spawnedObject.transform.localPosition;
-                ResetObject();
-                //Physics.gravity = new Vector3(0, -10, 0);
-                animator.enabled = true;
+                Physics.gravity = new Vector3(0, -1, 0);
                 lol = 0;
+                ResetObject();
+                
                 
                 
             }
@@ -81,7 +82,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             else
             {
                 Debug.Log("Tapped.");
-                Physics.gravity = new Vector3(0, -1, 0);
                 animator.enabled = false;
                 lol = 0;
                 while (foundRigidBodies.Length > lol)
