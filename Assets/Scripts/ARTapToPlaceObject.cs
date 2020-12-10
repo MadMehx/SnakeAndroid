@@ -30,7 +30,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         resetButton.onClick.AddListener(ResetObject);
-        Physics.gravity = new Vector3(0, 0, 0);
+        Physics.gravity = new Vector3(0, -10, 0);
     }
 
     // Update is called once per frame
@@ -61,14 +61,15 @@ public class ARTapToPlaceObject : MonoBehaviour
                 {
                     animator = FindObjectOfType<Animator>();
                 }
-                Physics.gravity = new Vector3(0, 0, 0);
-                animator.enabled = true;
+                Physics.gravity = new Vector3(0, -10, 0);
+                
                 lol = 0;
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = true;
                     lol++;
                 }
+                animator.enabled = true;
             }
             //regular tappin
             else

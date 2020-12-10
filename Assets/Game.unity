@@ -1050,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7806111897016771456, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_UpdateMode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7806111897152480939, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_ConnectedAnchor.x
