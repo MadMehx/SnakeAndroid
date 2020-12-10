@@ -55,6 +55,11 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
+                while (foundRigidBodies.Length > lol)
+                {
+                    foundRigidBodies[lol].isKinematic = true;
+                    lol++;
+                }
                 spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
                 defaultObjectPosition = spawnedObject.transform.localPosition;
                 if (animator == null)
@@ -64,11 +69,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 Physics.gravity = new Vector3(0, -10, 0);
                 
                 lol = 0;
-                while (foundRigidBodies.Length > lol)
-                {
-                    foundRigidBodies[lol].isKinematic = true;
-                    lol++;
-                }
+                
                 animator.enabled = true;
             }
             //regular tappin
