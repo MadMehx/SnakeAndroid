@@ -31,7 +31,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         resetButton.onClick.AddListener(ResetObject);
-        Physics.gravity = new Vector3(0, -10, 0);
+        Physics.gravity = new Vector3(0, -1, 0);
     }
 
     // Update is called once per frame
@@ -87,7 +87,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                     lol++;
                 }
                 Debug.Log("grav init");
-                punch = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
+                punch = new Vector3(UnityEngine.Random.Range(-50.0f, 50.0f), UnityEngine.Random.Range(-25.0f, 100.0f), UnityEngine.Random.Range(-50.0f, 50.0f));
                 foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(punch, ForceMode.Impulse);
                 // adding physics is bugged?
                 //Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));

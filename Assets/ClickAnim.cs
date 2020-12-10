@@ -16,6 +16,7 @@ public class ClickAnim : MonoBehaviour
 
     void Start()
     {
+        Physics.gravity = new Vector3(0, -50, 0);
         GetComponent<Rigidbody>().inertiaTensor = GetComponent<Rigidbody>().inertiaTensor + new Vector3(0, 0, GetComponent<Rigidbody>().inertiaTensor.z * 100);
         //r = GetComponent<Rigidbody>();
 
@@ -42,6 +43,7 @@ public class ClickAnim : MonoBehaviour
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = true;
+                    foundRigidBodies[lol].detectCollisions = false;
                     lol++;
                 }
                 
@@ -56,6 +58,7 @@ public class ClickAnim : MonoBehaviour
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = false;
+                    foundRigidBodies[lol].detectCollisions = true;
                     lol++;
                 }
                 //Vector3 position = new Vector3(Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f), Random.Range(-10.0f, 10.0f));
@@ -64,7 +67,10 @@ public class ClickAnim : MonoBehaviour
 
                 //r.Addforce(Vector3.forward);
                 Debug.Log("grav init");
-                Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
+
+                
+                foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-500.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f)), ForceMode.Impulse);
+                //Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
                 StartCoroutine(hit());
                
             }
@@ -78,6 +84,7 @@ public class ClickAnim : MonoBehaviour
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = true;
+                    foundRigidBodies[lol].detectCollisions = false;
                     lol++;
                 }
 
@@ -93,7 +100,7 @@ public class ClickAnim : MonoBehaviour
         yield return new WaitForSeconds(1);
         Debug.Log("registered hit");
         
-        Physics.gravity = new Vector3(0, -100.0F, 0);
+        //Physics.gravity = new Vector3(0, -100.0F, 0);
         Debug.Log("grav reset");
     }
 }
