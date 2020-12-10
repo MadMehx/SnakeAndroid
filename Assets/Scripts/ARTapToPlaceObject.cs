@@ -133,9 +133,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     //reset
     void ResetObject()
     {
-        Destroy(spawnedObject);
-        spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
-        spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
+        spawnedObject.transform.position = defaultObjectPosition;
         Physics.gravity = new Vector3(0, 0, 0);
         animator.enabled = true;
         animator.Play("get u");
