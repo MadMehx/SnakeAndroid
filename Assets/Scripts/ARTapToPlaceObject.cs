@@ -35,6 +35,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         UpdatePlacementPose();
         UpdatePlacementIndicator();
         if (!TryToGetTouchPosition(out Vector2 touchPosition))
@@ -61,12 +62,24 @@ public class ARTapToPlaceObject : MonoBehaviour
                 }
                 Physics.gravity = new Vector3(0, 0, 0);
                 animator.enabled = true;
+                lol = 0;
+                while (foundRigidBodies.Length > lol)
+                {
+                    foundRigidBodies[lol].isKinematic = true;
+                    lol++;
+                }
             }
             //regular tappin
             else
             {
                 Debug.Log("Tapped.");
                 animator.enabled = false;
+                lol = 0;
+                while (foundRigidBodies.Length > lol)
+                {
+                    foundRigidBodies[lol].isKinematic = false;
+                    lol++;
+                }
                 Debug.Log("grav init");
                 // adding physics is bugged?
                 Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
@@ -136,6 +149,12 @@ public class ARTapToPlaceObject : MonoBehaviour
         spawnedObject.transform.position = defaultObjectPosition;
         Physics.gravity = new Vector3(0, 0, 0);
         animator.enabled = true;
+        lol = 0;
+        while (foundRigidBodies.Length > lol)
+        {
+            foundRigidBodies[lol].isKinematic = true;
+            lol++;
+        }
         animator.Play("get u");
         Debug.Log("reset");
     }
