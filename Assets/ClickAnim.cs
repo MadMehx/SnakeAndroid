@@ -16,17 +16,15 @@ public class ClickAnim : MonoBehaviour
     public float Speed;
     public float AngularSpeed;
 
-
     void Start()
     {
-        Physics.gravity = new Vector3(0, -100.0F, 0);
+        
         //r = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Pressed primary button.");
@@ -50,7 +48,10 @@ public class ClickAnim : MonoBehaviour
                 //AngularSpeed = r.angularVelocity.magnitude;
 
                 //r.Addforce(Vector3.forward);
-                Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f));
+                Debug.Log("grav init");
+                Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
+                StartCoroutine(hit());
+               
             }
             else
             {
@@ -61,5 +62,15 @@ public class ClickAnim : MonoBehaviour
                 tap = 0;
             }
         }
+    }
+
+    IEnumerator hit()
+    {
+        
+        yield return new WaitForSeconds(1);
+        Debug.Log("registered hit");
+        
+        Physics.gravity = new Vector3(0, -100.0F, 0);
+        Debug.Log("grav reset");
     }
 }
