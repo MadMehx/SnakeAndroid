@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 using System;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
     public GameObject gameObjectToInstantiate;
-    public GameObject gameWorldBoundaries;
+    public Button resetButton;
     private GameObject spawnedObject;
     private GameObject worldBoundaries;
     private Vector2 touchPosition;
@@ -20,12 +21,14 @@ public class ARTapToPlaceObject : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
+    private Vector3 defaultObjectPosition;
 
     // Start is called before the first frame update
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         Physics.gravity = new Vector3(0, -10.0F, 0);
+        resetButton.onClick.AddListener(ResetObject);
     }
 
     // Update is called once per frame
@@ -48,24 +51,20 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                defaultObjectPosition = spawnedObject.transform.localPosition;
                 if (animator == null)
                 {
                     animator = FindObjectOfType<Animator>();
                 }
-                //spawnedObject.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
-                //worldBoundaries = Instantiate(gameWorldBoundaries, hitPose.position, hitPose.rotation);
                 animator.enabled = true;
             }
             //regular tappin
             else
             {
-                //legacy code:
-                //spawnedObject.transform.position = hitPose.position;
-                //worldBoundaries.transform.position = hitPose.position;
                 Debug.Log("Tapped.");
                 animator.enabled = false;
                 Debug.Log("grav init");
-                Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
+                Physics.gravity = new Vector3(UnityEngine.Random.Range(-100.0f, 100.0f), UnityEngine.Random.Range(-50.0f, 200.0f), UnityEngine.Random.Range(-100.0f, 100.0f));
                 StartCoroutine(hit());
             }
         }
@@ -127,8 +126,9 @@ public class ARTapToPlaceObject : MonoBehaviour
     }
 
     //reset: missing positional reset right now
-    void rest()
+    void ResetObject()
     {
+        spawnedObject.transform.position = defaultObjectPosition;
         animator.Play("get u");
         animator.enabled = true;
 
