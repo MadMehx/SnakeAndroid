@@ -15,6 +15,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Animator animator;
+    private Animation animation;
 
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
@@ -28,6 +29,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         resetButton.onClick.AddListener(ResetObject);
+        Physics.gravity = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -57,6 +59,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 {
                     animator = FindObjectOfType<Animator>();
                 }
+                Physics.gravity = new Vector3(0, 0, 0);
                 animator.enabled = true;
             }
             //regular tappin
@@ -133,9 +136,9 @@ public class ARTapToPlaceObject : MonoBehaviour
         Destroy(spawnedObject);
         spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
         spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
-        animator = FindObjectOfType<Animator>();
-        //animator.enabled = true;
-        //animator.Play("get u");
+        Physics.gravity = new Vector3(0, 0, 0);
+        animator.enabled = true;
+        animator.Play("get u");
         Debug.Log("reset");
     }
 }

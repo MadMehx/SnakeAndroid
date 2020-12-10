@@ -33,6 +33,7 @@ public class ClickAnim : MonoBehaviour
             }
             if (tap == 0)
             {
+                Physics.gravity = new Vector3(0, 0, 0);
                 animator.enabled = true;
             }
 
@@ -53,7 +54,9 @@ public class ClickAnim : MonoBehaviour
             }
             else
             {
+                Physics.gravity = new Vector3(0, 0, 0);
                 animator.Play("get u");
+                
                 animator.enabled = true;
                 
                 Debug.Log("reset");
