@@ -51,6 +51,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             if (spawnedObject == null)
             {
                 spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
                 defaultObjectPosition = spawnedObject.transform.localPosition;
                 if (animator == null)
                 {
