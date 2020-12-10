@@ -69,7 +69,7 @@ public class ClickAnim : MonoBehaviour
                 Debug.Log("grav init");
 
                 
-                foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-500.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f)), ForceMode.Impulse);
+                foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(new Vector3(UnityEngine.Random.Range(-2000.0f, 2000.0f), UnityEngine.Random.Range(-1000.0f, 2000.0f), UnityEngine.Random.Range(-2000.0f, 2000.0f)), ForceMode.Impulse);
                 //Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
                 StartCoroutine(hit());
                

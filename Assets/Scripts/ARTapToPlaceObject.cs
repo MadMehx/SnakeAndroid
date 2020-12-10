@@ -31,7 +31,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         resetButton.onClick.AddListener(ResetObject);
-        Physics.gravity = new Vector3(0, -1, 0);
+        Physics.gravity = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -78,6 +78,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             else
             {
                 Debug.Log("Tapped.");
+                Physics.gravity = new Vector3(0, -1, 0);
                 animator.enabled = false;
                 lol = 0;
                 while (foundRigidBodies.Length > lol)
