@@ -15,7 +15,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Animator animator;
-    private Animation animation;
 
     public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
@@ -134,8 +133,9 @@ public class ARTapToPlaceObject : MonoBehaviour
         Destroy(spawnedObject);
         spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
         spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
-        animator.enabled = true;
-        animator.Play("get u");
+        animator = FindObjectOfType<Animator>();
+        //animator.enabled = true;
+        //animator.Play("get u");
         Debug.Log("reset");
     }
 }
