@@ -69,7 +69,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 animator.enabled = false;
                 Debug.Log("grav init");
                 // adding physics is bugged?
-                //Physics.gravity = new Vector3(UnityEngine.Random.Range(-100.0f, 100.0f), UnityEngine.Random.Range(-50.0f, 200.0f), UnityEngine.Random.Range(-100.0f, 100.0f));
+                Physics.gravity = new Vector3(UnityEngine.Random.Range(-100.0f, 100.0f), UnityEngine.Random.Range(-50.0f, 200.0f), UnityEngine.Random.Range(-100.0f, 100.0f));
                 StartCoroutine(hit());
             }
         }
