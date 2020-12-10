@@ -31,7 +31,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
         resetButton.onClick.AddListener(ResetObject);
-        Physics.gravity = new Vector3(0, 0, 0);
+        Physics.gravity = new Vector3(0, -10, 0);
     }
 
     // Update is called once per frame
@@ -59,6 +59,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = true;
+                    foundRigidBodies[lol].detectCollisions = false;
                     lol++;
                 }
                 spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
@@ -82,6 +83,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = false;
+                    foundRigidBodies[lol].detectCollisions = true;
                     lol++;
                 }
                 Debug.Log("grav init");
@@ -160,6 +162,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         while (foundRigidBodies.Length > lol)
         {
             foundRigidBodies[lol].isKinematic = true;
+            foundRigidBodies[lol].detectCollisions = false;
             lol++;
         }
         animator.Play("get u");
