@@ -26,6 +26,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
+        Physics.gravity = new Vector3(0, -10.0F, 0);
     }
 
     // Update is called once per frame
@@ -68,7 +69,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 //worldBoundaries.transform.position = hitPose.position;
                 animator.enabled = true;
                 animation.Play("getup");
-                animator.Play("getup");
+                animator.Play("get u");
                 tap = 0;
             }
         }
