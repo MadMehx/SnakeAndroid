@@ -22,12 +22,12 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Pose placementPose;
     private bool placementPoseIsValid = false;
     private Vector3 defaultObjectPosition;
+    public Pose spawnPose;
 
     // Start is called before the first frame update
     void Start()
     {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
-        Physics.gravity = new Vector3(0, -10.0F, 0);
         resetButton.onClick.AddListener(ResetObject);
     }
 
@@ -47,10 +47,11 @@ public class ARTapToPlaceObject : MonoBehaviour
 
             // adjust the height of the object by .2
             hitPose.position.y = hitPose.position.y + 0.2f;
+            spawnPose = hitPose;
 
             if (spawnedObject == null)
             {
-                spawnedObject = Instantiate(gameObjectToInstantiate, hitPose.position, hitPose.rotation);
+                spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
                 spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
                 defaultObjectPosition = spawnedObject.transform.localPosition;
                 if (animator == null)
@@ -65,7 +66,8 @@ public class ARTapToPlaceObject : MonoBehaviour
                 Debug.Log("Tapped.");
                 animator.enabled = false;
                 Debug.Log("grav init");
-                Physics.gravity = new Vector3(UnityEngine.Random.Range(-100.0f, 100.0f), UnityEngine.Random.Range(-50.0f, 200.0f), UnityEngine.Random.Range(-100.0f, 100.0f));
+                // adding physics is bugged?
+                //Physics.gravity = new Vector3(UnityEngine.Random.Range(-100.0f, 100.0f), UnityEngine.Random.Range(-50.0f, 200.0f), UnityEngine.Random.Range(-100.0f, 100.0f));
                 StartCoroutine(hit());
             }
         }
@@ -126,13 +128,14 @@ public class ARTapToPlaceObject : MonoBehaviour
         Debug.Log("grav reset");
     }
 
-    //reset: missing positional reset right now
+    //reset
     void ResetObject()
     {
-        spawnedObject.transform.position = defaultObjectPosition;
-        animator.Play("get u");
+        Destroy(spawnedObject);
+        spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
+        spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
         animator.enabled = true;
-
+        animator.Play("get u");
         Debug.Log("reset");
     }
 }
