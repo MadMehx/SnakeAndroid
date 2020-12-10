@@ -11,6 +11,8 @@ public class ClickAnim : MonoBehaviour
 
     private Animator animator;
     private Animation animation;
+    int tap = 0;
+
 
     void Start()
     {
