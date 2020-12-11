@@ -63,12 +63,12 @@ public class ARTapToPlaceObject : MonoBehaviour
                 }
                 animator.enabled = false;
                 
-                while (foundRigidBodies.Length > lol)
-                {
-                    foundRigidBodies[lol].isKinematic = true;
-                    foundRigidBodies[lol].detectCollisions = false;
-                    lol++;
-                }
+                //while (foundRigidBodies.Length > lol)
+                //{
+                    //foundRigidBodies[lol].isKinematic = true;
+                    //foundRigidBodies[lol].detectCollisions = false;
+                    //lol++;
+                //}
                 
                 defaultObjectPosition = spawnedObject.transform.localPosition;
                 Physics.gravity = new Vector3(0, -1, 0);
@@ -156,6 +156,23 @@ public class ARTapToPlaceObject : MonoBehaviour
         //Physics.gravity = new Vector3(0, -10.0F, 0);
         Debug.Log("grav reset");
     }
+    IEnumerator phyDelay()
+    {
+
+        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
+        yield return new WaitForSeconds(10);
+        
+
+        lol = 0;
+        while (foundRigidBodies.Length > lol)
+        {
+            foundRigidBodies[lol].isKinematic = true;
+            foundRigidBodies[lol].detectCollisions = false;
+            lol++;
+        }
+        Debug.Log("kinimatics");
+
+    }
 
     //reset
     void ResetObject()
@@ -163,15 +180,8 @@ public class ARTapToPlaceObject : MonoBehaviour
         spawnedObject.transform.position = defaultObjectPosition;
         Physics.gravity = new Vector3(0, -2, 0);
         animator.enabled = true;
-        lol = 0;
-        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
-        while (foundRigidBodies.Length > lol)
-        {
-            foundRigidBodies[lol].isKinematic = true;
-            foundRigidBodies[lol].detectCollisions = false;
-            lol++;
-        }
         animator.Play("get u");
+        StartCoroutine(phyDelay());
         Debug.Log("reset");
     }
 }
