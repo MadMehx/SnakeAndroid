@@ -162,7 +162,11 @@ public class ARTapToPlaceObject : MonoBehaviour
     void ResetObject()
     {
         spawnedObject.transform.position = defaultObjectPosition;
+<<<<<<< HEAD
         Physics.gravity = new Vector3(0, 0, 0);
+=======
+        Physics.gravity = new Vector3(0, -2, 0);
+>>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
         animator.enabled = true;
         lol = 0;
         var foundRigidBodies = FindObjectsOfType<Rigidbody>();
@@ -172,6 +176,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             foundRigidBodies[lol].detectCollisions = false;
             lol++;
         }
+<<<<<<< HEAD
         Debug.Log("kinimatics");
 
     }
@@ -189,6 +194,8 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
         animator.enabled = true;
 
+=======
+>>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
         animator.Play("get u");
         Debug.Log("reset");
     }

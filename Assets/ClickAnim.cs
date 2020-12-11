@@ -87,6 +87,7 @@ public class ClickAnim : MonoBehaviour
                     foundRigidBodies[lol].detectCollisions = false;
                     lol++;
                 }
+<<<<<<< HEAD
                 animator.enabled = true;
                 animator.Play("get u");
                 lol = 0;
@@ -98,6 +99,8 @@ public class ClickAnim : MonoBehaviour
                 }
                 StartCoroutine(hit());
                
+=======
+>>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
 
                 Debug.Log("reset");
                 tap = 0;
