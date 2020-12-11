@@ -71,22 +71,21 @@ public class ClickAnim : MonoBehaviour
                 
                 foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(new Vector3(UnityEngine.Random.Range(-2000.0f, 2000.0f), UnityEngine.Random.Range(-1000.0f, 2000.0f), UnityEngine.Random.Range(-2000.0f, 2000.0f)), ForceMode.Impulse);
                 //Physics.gravity = new Vector3(Random.Range(-100.0f, 100.0f), Random.Range(-50.0f, 200.0f), Random.Range(-100.0f, 100.0f));
-                StartCoroutine(hit());
+                
                
             }
             else
             {
                 //Physics.gravity = new Vector3(0, 0, 0);
-                animator.Play("get u");
-                
-                animator.enabled = true;
                 lol = 0;
                 while (foundRigidBodies.Length > lol)
                 {
-                    foundRigidBodies[lol].isKinematic = true;
-                    foundRigidBodies[lol].detectCollisions = false;
+                    foundRigidBodies[lol].isKinematic = false;
+                    foundRigidBodies[lol].detectCollisions = true;
+                    Debug.Log("lmao");
                     lol++;
                 }
+<<<<<<< HEAD
 <<<<<<< HEAD
                 animator.enabled = true;
                 animator.Play("get u");
@@ -101,6 +100,12 @@ public class ClickAnim : MonoBehaviour
                
 =======
 >>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
+=======
+                animator.enabled = true;
+                animator.Play("get u");
+                StartCoroutine(hit());
+                
+>>>>>>> parent of 0b7894b... Revert "Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main"
 
                 Debug.Log("reset");
                 tap = 0;
@@ -110,10 +115,19 @@ public class ClickAnim : MonoBehaviour
 
     IEnumerator hit()
     {
-        
-        yield return new WaitForSeconds(1);
+        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
+        yield return new WaitForSeconds(10);
         Debug.Log("registered hit");
+
         
+        lol = 0;
+        Debug.Log("change");
+        while (foundRigidBodies.Length > lol)
+        {
+            foundRigidBodies[lol].isKinematic = true;
+            foundRigidBodies[lol].detectCollisions = false;
+            lol++;
+        }
         //Physics.gravity = new Vector3(0, -100.0F, 0);
         Debug.Log("grav reset");
     }
