@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!54 &407803737 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7806111896089675871, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+  m_PrefabInstance: {fileID: 7806111895265671354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &465809881
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,6 +1041,10 @@ PrefabInstance:
       propertyPath: m_UpdateMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7806111897016771456, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7806111897152480939, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 0.034860495
@@ -1060,5 +1069,9 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.0000013448272
       objectReference: {fileID: 0}
+    - target: {fileID: 7806111897221031306, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 407803737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e61a1e2cfa1aa5747943541bf4e69fca, type: 3}
