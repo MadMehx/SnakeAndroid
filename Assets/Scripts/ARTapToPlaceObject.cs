@@ -24,6 +24,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     private Vector3 defaultObjectPosition;
     public Pose spawnPose;
     int lol;
+    bool tapped;
     Vector3 punch;
 
     // Start is called before the first frame update
@@ -46,6 +47,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
+            tapped = true;
             // get all possible surfaces, select the closest one
             var hitPose = hits[0].pose;
 
@@ -163,19 +165,21 @@ public class ARTapToPlaceObject : MonoBehaviour
         spawnedObject.transform.position = defaultObjectPosition;
         Physics.gravity = new Vector3(0, 0, 0);
         animator.enabled = true;
-        lol = 0;
+        tapped = false;
         yield return new WaitForSeconds(10);
-        
 
-        lol = 0;
-        while (foundRigidBodies.Length > lol)
+        if (tapped == false)
         {
-            foundRigidBodies[lol].isKinematic = true;
-            foundRigidBodies[lol].detectCollisions = false;
-            lol++;
+            lol = 0;
+            while (foundRigidBodies.Length > lol)
+            {
+                foundRigidBodies[lol].isKinematic = true;
+                foundRigidBodies[lol].detectCollisions = false;
+                lol++;
+            }
+            Debug.Log("kinimatics");
         }
-        Debug.Log("kinimatics");
-
+        
     }
 
     //reset
