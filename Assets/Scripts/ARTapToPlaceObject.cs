@@ -159,11 +159,11 @@ public class ARTapToPlaceObject : MonoBehaviour
     }
     IEnumerator phyDelay()
     {
+        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         spawnedObject.transform.position = defaultObjectPosition;
         Physics.gravity = new Vector3(0, 0, 0);
         animator.enabled = true;
         lol = 0;
-        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         yield return new WaitForSeconds(10);
         
 
@@ -181,6 +181,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     //reset
     void ResetObject()
     {
+        var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         spawnedObject.transform.position = defaultObjectPosition;
         Physics.gravity = new Vector3(0, 0, 0);
         lol = 0;
