@@ -71,7 +71,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 }
                 
                 defaultObjectPosition = spawnedObject.transform.localPosition;
-                Physics.gravity = new Vector3(0, -1, 0);
+               
                 lol = 0;
 
 
@@ -83,6 +83,7 @@ public class ARTapToPlaceObject : MonoBehaviour
             //regular tappin
             else
             {
+                Physics.gravity = new Vector3(0, -1, 0);
                 Debug.Log("Tapped.");
                 animator.enabled = false;
                 lol = 0;
@@ -161,7 +162,7 @@ public class ARTapToPlaceObject : MonoBehaviour
     void ResetObject()
     {
         spawnedObject.transform.position = defaultObjectPosition;
-        Physics.gravity = new Vector3(0, -2, 0);
+        Physics.gravity = new Vector3(0, 0, 0);
         animator.enabled = true;
         lol = 0;
         var foundRigidBodies = FindObjectsOfType<Rigidbody>();
@@ -171,6 +172,23 @@ public class ARTapToPlaceObject : MonoBehaviour
             foundRigidBodies[lol].detectCollisions = false;
             lol++;
         }
+        Debug.Log("kinimatics");
+
+    }
+
+    //reset
+    void ResetObject()
+    {
+        spawnedObject.transform.position = defaultObjectPosition;
+        Physics.gravity = new Vector3(0, 0, 0);
+        lol = 0;
+        while (foundRigidBodies.Length > lol)
+        {
+            foundRigidBodies[lol].detectCollisions = false;
+            lol++;
+        }
+        animator.enabled = true;
+
         animator.Play("get u");
         Debug.Log("reset");
     }

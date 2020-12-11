@@ -87,6 +87,17 @@ public class ClickAnim : MonoBehaviour
                     foundRigidBodies[lol].detectCollisions = false;
                     lol++;
                 }
+                animator.enabled = true;
+                animator.Play("get u");
+                lol = 0;
+                Debug.Log("collisions");
+                while (foundRigidBodies.Length > lol)
+                {
+                    foundRigidBodies[lol].detectCollisions = false;
+                    lol++;
+                }
+                StartCoroutine(hit());
+               
 
                 Debug.Log("reset");
                 tap = 0;
