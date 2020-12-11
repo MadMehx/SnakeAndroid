@@ -73,7 +73,9 @@ public class ARTapToPlaceObject : MonoBehaviour
                 defaultObjectPosition = spawnedObject.transform.localPosition;
                 Physics.gravity = new Vector3(0, -1, 0);
                 lol = 0;
-                ResetObject();
+
+
+                StartCoroutine(hit());
                 
                 
                 
@@ -95,7 +97,7 @@ public class ARTapToPlaceObject : MonoBehaviour
                 foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(punch, ForceMode.Impulse);
                 // adding physics is bugged?
                 //Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
-                StartCoroutine(hit());
+               
             }
         }
     }
@@ -150,7 +152,7 @@ public class ARTapToPlaceObject : MonoBehaviour
 
         yield return new WaitForSeconds(1);
         Debug.Log("registered hit");
-
+        ResetObject();
         //Physics.gravity = new Vector3(0, -10.0F, 0);
         Debug.Log("grav reset");
     }
