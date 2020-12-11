@@ -159,18 +159,10 @@ public class ARTapToPlaceObject : MonoBehaviour
     }
     IEnumerator phyDelay()
     {
-<<<<<<< HEAD
         spawnedObject.transform.position = defaultObjectPosition;
-<<<<<<< HEAD
         Physics.gravity = new Vector3(0, 0, 0);
-=======
-        Physics.gravity = new Vector3(0, -2, 0);
->>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
         animator.enabled = true;
         lol = 0;
-=======
-
->>>>>>> parent of 0b7894b... Revert "Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main"
         var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         yield return new WaitForSeconds(10);
         
@@ -182,10 +174,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             foundRigidBodies[lol].detectCollisions = false;
             lol++;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of 0b7894b... Revert "Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main"
         Debug.Log("kinimatics");
 
     }
@@ -194,7 +182,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     void ResetObject()
     {
         spawnedObject.transform.position = defaultObjectPosition;
-<<<<<<< HEAD
         Physics.gravity = new Vector3(0, 0, 0);
         lol = 0;
         while (foundRigidBodies.Length > lol)
@@ -203,13 +190,6 @@ public class ARTapToPlaceObject : MonoBehaviour
             lol++;
         }
         animator.enabled = true;
-
-=======
->>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
-=======
-        Physics.gravity = new Vector3(0, -2, 0);
-        animator.enabled = true;
->>>>>>> parent of 0b7894b... Revert "Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main"
         animator.Play("get u");
         StartCoroutine(phyDelay());
         Debug.Log("reset");

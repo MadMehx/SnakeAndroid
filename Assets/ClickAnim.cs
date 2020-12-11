@@ -85,8 +85,6 @@ public class ClickAnim : MonoBehaviour
                     Debug.Log("lmao");
                     lol++;
                 }
-<<<<<<< HEAD
-<<<<<<< HEAD
                 animator.enabled = true;
                 animator.Play("get u");
                 lol = 0;
@@ -98,15 +96,10 @@ public class ClickAnim : MonoBehaviour
                 }
                 StartCoroutine(hit());
                
-=======
->>>>>>> parent of 4143f0e... Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main
-=======
                 animator.enabled = true;
                 animator.Play("get u");
                 StartCoroutine(hit());
                 
->>>>>>> parent of 0b7894b... Revert "Merge branch 'main' of https://github.com/MadMehx/SnakeAndroid into main"
-
                 Debug.Log("reset");
                 tap = 0;
             }
