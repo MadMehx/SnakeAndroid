@@ -10,14 +10,14 @@ public class ARTapToPlaceObject : MonoBehaviour
 {
     public GameObject gameObjectToInstantiate;
     public Button resetButton;
+    public GameObject placementIndicator;
+
     private GameObject spawnedObject;
     private GameObject worldBoundaries;
     private Vector2 touchPosition;
     static List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private Animator animator;
     private Animation animation;
-
-    public GameObject placementIndicator;
     private ARRaycastManager aRRaycastManager;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
@@ -30,21 +30,28 @@ public class ARTapToPlaceObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find AR raycast manager
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
+        // add listener to reset button
         resetButton.onClick.AddListener(ResetObject);
+        // initialize gravity to 0
         Physics.gravity = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        // find all rigidbodies in scene
         var foundRigidBodies = FindObjectsOfType<Rigidbody>();
         UpdatePlacementPose();
         UpdatePlacementIndicator();
+
+        // check if screen is tapped, if not then return
         if (!TryToGetTouchPosition(out Vector2 touchPosition))
         {
             return;
         }
+        // check for planes
         if (aRRaycastManager.Raycast(touchPosition, hits, TrackableType.PlaneWithinPolygon))
         {
             tapped = true;
@@ -57,54 +64,43 @@ public class ARTapToPlaceObject : MonoBehaviour
 
             if (spawnedObject == null)
             {
+                // if no object is spawned, then instantiate object
                 spawnedObject = Instantiate(gameObjectToInstantiate, spawnPose.position, spawnPose.rotation);
+                // rotate to face screen
                 spawnedObject.transform.Rotate(0f, 180f, 0f, Space.Self);
+                // find animator
                 if (animator == null)
                 {
                     animator = FindObjectOfType<Animator>();
                 }
                 animator.enabled = false;
-                
-                //while (foundRigidBodies.Length > lol)
-                //{
-                    //foundRigidBodies[lol].isKinematic = true;
-                    //foundRigidBodies[lol].detectCollisions = false;
-                    //lol++;
-                //}
-                
                 defaultObjectPosition = spawnedObject.transform.localPosition;
-               
                 lol = 0;
-
-
                 StartCoroutine(hit());
-                
-                
-                
             }
-            //regular tappin
             else
             {
+                // object has already spawned, user has tapped
+                // set gravity
                 Physics.gravity = new Vector3(0, -1, 0);
-                Debug.Log("Tapped.");
                 animator.enabled = false;
                 lol = 0;
+                // edit all rigidbodies for ragdoll
                 while (foundRigidBodies.Length > lol)
                 {
                     foundRigidBodies[lol].isKinematic = false;
                     foundRigidBodies[lol].detectCollisions = true;
                     lol++;
                 }
-                Debug.Log("grav init");
+                // apply random force to a random rigidbody
                 punch = new Vector3(UnityEngine.Random.Range(-20.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 40.0f), UnityEngine.Random.Range(-20.0f, 20.0f));
                 foundRigidBodies[UnityEngine.Random.Range(0, lol)].AddForce(punch, ForceMode.Impulse);
-                // adding physics is bugged?
-                //Physics.gravity = new Vector3(UnityEngine.Random.Range(-10.0f, 10.0f), UnityEngine.Random.Range(-5.0f, 20.0f), UnityEngine.Random.Range(-10.0f, 10.0f));
-               
             }
         }
     }
 
+    // display placement indicator on screen, update its location
+    // if no plane is visible in center of screen, then placement indicator will not be displayed
     private void UpdatePlacementIndicator()
     {
         if (placementPoseIsValid)
@@ -118,6 +114,7 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
     }
 
+    // get a touch position on screen
     bool TryToGetTouchPosition(out Vector2 touchPosition)
     {
         if(Input.touchCount > 0)
@@ -149,25 +146,28 @@ public class ARTapToPlaceObject : MonoBehaviour
         }
     }
 
-    //Timer for hit minimum 1 second :/
+    // defines how a long the physics hit will last on the rigidbody
     IEnumerator hit()
     {
 
         yield return new WaitForSeconds(1);
-        Debug.Log("registered hit");
         ResetObject();
-        //Physics.gravity = new Vector3(0, -10.0F, 0);
-        Debug.Log("grav reset");
     }
+
+    // delay timer and logic for resetting object
     IEnumerator phyDelay()
     {
+        // find all rigidbodies
         var foundRigidBodies = FindObjectsOfType<Rigidbody>();
+        // set object to default position
         spawnedObject.transform.position = defaultObjectPosition;
+        // reset gravity
         Physics.gravity = new Vector3(0, 0, 0);
+        // enable animator for getup animation
         animator.enabled = true;
         tapped = false;
         yield return new WaitForSeconds(10);
-
+        // if screen is not tapped, animation will play.
         if (tapped == false)
         {
             lol = 0;
@@ -177,26 +177,28 @@ public class ARTapToPlaceObject : MonoBehaviour
                 foundRigidBodies[lol].detectCollisions = false;
                 lol++;
             }
-            Debug.Log("kinimatics");
-        }
-        
+        }   
     }
 
-    //reset
+    // reset the object to its original position
     void ResetObject()
     {
+        // find all rigidbodies
         var foundRigidBodies = FindObjectsOfType<Rigidbody>();
+        // set object to default position
         spawnedObject.transform.position = defaultObjectPosition;
+        // remove gravity
         Physics.gravity = new Vector3(0, 0, 0);
+        // set all rigidbodies to avoid collision
         lol = 0;
         while (foundRigidBodies.Length > lol)
         {
             foundRigidBodies[lol].detectCollisions = false;
             lol++;
         }
+        // play get up animation
         animator.enabled = true;
         animator.Play("get u");
         StartCoroutine(phyDelay());
-        Debug.Log("reset");
     }
 }
