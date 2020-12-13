@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//-----------------------------------------------------------------------------
+// Creates functionalility for the resume and quit button for the application 
+// for the pause menu. It uses Unity's SceneManagement library to help build the
+// function needed to shift to a different scene.
+//
+// Assumptions, implementation details
+//   -- There are two buttons 
+//   -- The buttons properly reference the functions
 public class pause : MonoBehaviour
 {
     //-----------------------------------------------------------------------------
-    // PlayGame
-    // public void function. This function allows the user to press on the start
-    // button for the application and it will load the game. The function 
+    // PauseGame
+    // public void function. This function allows the user to press on the pause
+    // button for the application and change into a different scene. The function 
     // uses the scenemanager in Unity to change between different scenes within
     // the application.
     public void PauseGame()
@@ -19,7 +27,7 @@ public class pause : MonoBehaviour
     //-----------------------------------------------------------------------------
     // ResumeGame
     // public void function. This function allows the user to press on the start
-    // button for the application and it will load the game. The function 
+    // resume for the application and it will reload the game. The function 
     // uses the scenemanager in Unity to change between different scenes within
     // the application.
     public void ResumeGame()
